@@ -1,0 +1,40 @@
+1. Lab filled first
+2. Accordingly faculty scheduled is filled and class schedule is made
+3. Class schedule is then made keeping in mind faculty schedules
+
+Tables
+LAB CLASS FACULTY USER ATTENDANCE
+lab:
+	id
+	lab_id
+	day
+	slot_no
+	class_id
+	faculty_id
+	subject_id
+
+class:
+	id
+	class_id
+	day
+	slot_no
+	faculty_id
+	subject_id
+
+faculty:
+	id
+	faculty_id
+	day
+	slot_no
+	class_type
+	class_id
+	subject_id
+
+user:
+	id
+	user_id
+	phone_no
+	password
+	usertype
+
+total_slot_per_day = select count(*) from faculty where faculty_id='&faculty_id' and day='&day'

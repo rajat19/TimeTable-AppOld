@@ -1,0 +1,30 @@
+faculty absent at last moment-
+
+how to check-
+1. attendance of all faculties by 8:20 in the morning
+2. if faculty not reached the class, CR should contact through app
+3. also provision to mark their absence for a particular duration of time
+
+what to do-
+1. app gets notified through any of above condition
+2. find the class which the faculty had to take
+3. find all teachers which are available for the class
+	a. if lab, any free faculty
+	b. if class, find faculty teaching that class
+4. sort faculty according to following parameters (devise points for each parameter)
+	a. no. of free lectures -> more the free lectures that day, more chances of assigning
+	b. last lecture free -> if yes, more chances of assigning
+	c. next lecture free -> if yes, more chances of assigning
+	d. syllabus is complete -> if no, more chances of assigning
+5. inform the concerned authority about their lecture
+6. inform CR and admin about the faculty
+7. check again after period is over, if any faculty is absent
+
+how to inform-
+1. automated calls (if free possible)
+2. push notifications through app
+3. messages (if free)
+
+some more thought-
+1. if any faculty for a class is not available, find that faculty which teaches in the class and is currently in lab
+2. provide ranking system as explained above to allot class
