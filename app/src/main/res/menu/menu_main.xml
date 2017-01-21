@@ -15,8 +15,8 @@
             android:title="Login" >
         </item>
         <item
-            android:id="@+id/contact_id"
-            android:title="Contact Us" >
+            android:id="@+id/view_id"
+            android:title="View Timetable" >
         </item>
     </group>
 </menu>

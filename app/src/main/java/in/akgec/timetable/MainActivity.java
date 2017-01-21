@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,15 +33,34 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        fragmentTransaction.add(R.id.main_container, new HomeFragment());
+        fragmentTransaction.add(R.id.main_container, new LoginFragment());
         fragmentTransaction.commit();
         textView = new TextView(getApplicationContext());
-        textView.setText("Samarpan");
+        textView.setText("Timetable");
         textView.setTextSize(30);
         textView.setTextColor(Color.WHITE);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(textView);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                switch (item.getItemId()) {
+                    case R.id.home_id:
+                        break;
+                    case R.id.login_id:
+                        fragmentTransaction.replace(R.id.main_container, new LoginFragment());
+                        break;
 
+                }
+                fragmentTransaction.commit();
+                getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                getSupportActionBar().setCustomView(textView);
+                item.setChecked(true);
+                drawerLayout.closeDrawers();
+                return false;
+            }
+        });
     }
 }
