@@ -2,6 +2,7 @@ package in.akgec.timetable;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Cache;
+import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,6 +39,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     String emailString, passwordString;
     ServerLink link = new ServerLink();
     String VALIDATE_LOGIN = link.VALIDATE_LOGIN;
+    RequestQueue requestQueue;
+    public static final String TAG = "MyTag";
     private static final Pattern EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     public LoginFragment() {
         // Required empty public constructor
@@ -76,9 +89,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     flag++;
                 }
                 if(flag == 0) {
-                    /*Start async task to login the user*/
-                    String arr[] = {emailString, passwordString};
-//                    new Login().execute(arr);
+                    /*Start task to login the user*/
+//                    sendCustomRequest();
                 }
                 break;
             case R.id.btnRegister:
@@ -91,27 +103,31 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         return matcher.find();
     }
 
-    private void sendData() {
-        RequestQueue queue = Volley.newRequestQueue(getContext());
+    private void sendCustomRequest() {
         String url = VALIDATE_LOGIN;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("email", emailString);
+        params.put("password", passwordString);
+
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
-                String resp = response;
+            public void onResponse(JSONObject response) {
+                Log.d("Response: ", response.toString());
             }
-        },
-        new Response.ErrorListener() {
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                String resp = "";
+                Log.d("Response: ", error.toString());
             }
         });
-        queue.add(stringRequest);
+        RequestController.getInstance(getContext()).addToRequestQueue(jsObjRequest);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
+        if(requestQueue != null) {
+            RequestController.getInstance(getContext()).cancelPendingRequests();
+        }
     }
 }
