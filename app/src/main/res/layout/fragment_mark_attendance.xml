@@ -1,13 +1,56 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
+             xmlns:card="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="in.akgec.timetable.MarkAttendanceFragment">
+             tools:context="in.akgec.timetable.MarkAttendanceFragment"
+             android:padding="10dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_height="wrap_content"
+        card:contentPadding="10dp"
+        card:cardCornerRadius="10dp"
+        card:cardElevation="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/mark_attendance"
+                android:fontFamily="Roboto"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:text="@string/faculty_id"
+                android:fontFamily="Roboto"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner"
+                android:tag="Choose"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/mark_btn"
+                android:textColor="@color/colorWhite"
+                android:elevation="10dp"
+                android:background="@color/colorBlue"
+                android:drawableRight="@android:drawable/checkbox_on_background"
+                android:translationZ="5dp"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </FrameLayout>
