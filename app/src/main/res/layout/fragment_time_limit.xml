@@ -3,7 +3,7 @@
     xmlns:card="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="in.akgec.timetable.MarkLeaveFragment"
+    tools:context="in.akgec.timetable.TimeLimitFragment"
     android:padding="10dp">
 
     <android.support.v7.widget.CardView
@@ -15,45 +15,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/mark_leave"
+                android:text="Set Time Limit For Attendance"
                 android:fontFamily="Roboto"/>
+
+            <TimePicker
+                android:layout_width="match_parent"
+                android:layout_height="267dp"
+                android:layout_marginTop="15dp"
+                android:id=""
+                android:layout_weight="1.07" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
-                android:text="@string/faculty_id"
+                android:text="Current Time Limit:"
                 android:fontFamily="Roboto"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner"
-                android:tag="Choose"/>
-
-            <DatePicker
-                android:layout_width="match_parent"
-                android:layout_height="204dp"
-                android:id="@+id/datePicker2"
-                android:layout_marginTop="20dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/mark_btn"
+                android:text="Set "
+                android:padding="10dp"
                 android:textColor="@color/colorWhite"
                 android:elevation="10dp"
-                android:drawableRight="@android:drawable/checkbox_on_background"
                 android:background="@color/colorBlue"
+                android:drawableRight="@android:drawable/ic_lock_idle_alarm"
                 android:translationZ="5dp"/>
 
         </LinearLayout>

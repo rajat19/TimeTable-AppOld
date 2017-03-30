@@ -3,7 +3,7 @@
     xmlns:card="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="in.akgec.timetable.MarkLeaveFragment"
+    tools:context="in.akgec.timetable.TemporaryClassFragment"
     android:padding="10dp">
 
     <android.support.v7.widget.CardView
@@ -22,37 +22,22 @@
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/mark_leave"
+                android:text="View Temporary Classes"
                 android:fontFamily="Roboto"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp"
-                android:text="@string/faculty_id"
-                android:fontFamily="Roboto"/>
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner"
-                android:tag="Choose"/>
 
             <DatePicker
                 android:layout_width="match_parent"
-                android:layout_height="204dp"
-                android:id="@+id/datePicker2"
-                android:layout_marginTop="20dp"/>
+                android:layout_height="107dp"
+                android:layout_marginTop="15dp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/mark_btn"
+                android:text="View"
                 android:textColor="@color/colorWhite"
                 android:elevation="10dp"
-                android:drawableRight="@android:drawable/checkbox_on_background"
+                android:drawableRight="@android:drawable/ic_menu_send"
                 android:background="@color/colorBlue"
                 android:translationZ="5dp"/>
 
