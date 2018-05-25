@@ -10,5 +10,4 @@ The apk is yet to be generated and made available for use
 ## Contributors
 1. Rajat Srivastava
 2. Prashant Pandey
-3. Komal Gupta
-4. Mishika Garg
+3. Mishika Garg
